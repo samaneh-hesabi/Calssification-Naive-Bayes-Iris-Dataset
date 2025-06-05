@@ -1,10 +1,17 @@
-<div style="font-size:2.5em; font-weight:bold; text-align:center; margin-top:20px;">Naive Bayes Classification Project</div>
+<div style="font-size:2.5em; font-weight:bold; text-align:center; margin-top:20px;">Simple Iris Classification with Naive Bayes</div>
 
 # 1. Project Overview
-This project implements a Naive Bayes classifier for the Iris dataset, demonstrating a complete machine learning workflow from data preprocessing to model evaluation. The implementation follows best practices in machine learning and Python development.
+This is a simple implementation of a Naive Bayes classifier for the famous Iris flower dataset. The code demonstrates how to:
+
+1. Load the Iris dataset
+2. Split data into training and testing sets
+3. Train a Gaussian Naive Bayes model
+4. Make predictions
+5. Evaluate model performance
+6. Visualize results with informative plots
 
 # 1.1 Dataset Description
-The Iris dataset is a classic dataset in machine learning, containing measurements of 150 iris flowers from three different species:
+The Iris dataset contains measurements of 150 iris flowers from three different species:
 - Iris setosa
 - Iris versicolor
 - Iris virginica
@@ -15,149 +22,61 @@ Each sample has four features:
 3. Petal length (cm)
 4. Petal width (cm)
 
-The dataset is balanced, with 50 samples from each species.
+# 1.2 How to Run
 
-# 1.2 Methodology
-## 1.2.1 Data Preprocessing
-- Standardization of features using z-score normalization
-- Train-test split (80% training, 20% testing)
-- Handling of missing values (if any)
-- Feature selection and analysis
-
-## 1.2.2 Model Implementation
-The project implements Gaussian Naive Bayes, which assumes:
-- Features are conditionally independent given the class
-- Each feature follows a Gaussian (normal) distribution
-- Prior probabilities are estimated from the training data
-
-## 1.2.3 Evaluation Metrics
-- Accuracy
-- Precision
-- Recall
-- F1-score
-- Confusion matrix
-- Classification report
-
-# 1.3 Project Structure
-- `data_preprocessing.py`: 
-  - Data loading and cleaning
-  - Feature scaling and normalization
-  - Train-test splitting
-  - Data visualization utilities
-
-- `model_training.py`:
-  - Gaussian Naive Bayes implementation
-  - Model training and prediction
-  - Probability estimation
-  - Model persistence
-
-- `evaluation.py`:
-  - Performance metrics calculation
-  - Confusion matrix generation
-  - Classification report
-  - Cross-validation
-
-- `visualization.py`:
-  - Confusion matrix plot
-  - Feature distribution plots
-  - Decision boundary visualization
-  - ROC curves (if applicable)
-
-- `main.py`:
-  - Orchestrates the complete workflow
-  - Command-line interface
-  - Results logging
-  - Experiment tracking
-
-- `requirements.txt`:
-  - Lists all required Python packages with specific versions
-  - Development dependencies
-  - Testing requirements
-
-# 1.4 Results
-The model achieves the following performance metrics:
-- Accuracy: [To be filled after running]
-- Precision: [To be filled after running]
-- Recall: [To be filled after running]
-- F1-score: [To be filled after running]
-
-Visualizations include:
-- Confusion matrix showing true vs. predicted classes
-- Feature distribution plots for each class
-- Decision boundaries in 2D feature space
-- ROC curves for multi-class classification
-
-# 1.5 Installation
-1. Clone the repository:
+1. Make sure you have Python installed
+2. Install the required packages:
 ```bash
-git clone [repository-url]
-cd Calssification-Naive-Bayes-Dataset
+pip install scikit-learn matplotlib seaborn numpy
+```
+3. Run the classifier:
+```bash
+python simple_iris_classifier.py
 ```
 
-2. Create and activate a virtual environment (recommended):
-```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-```
+# 1.3 Expected Output
+The program will:
+1. Train the model on the Iris dataset
+2. Display the model's accuracy and a detailed classification report
+3. Generate two visualizations:
+   - Confusion matrix showing prediction results
+   - Feature importance plots for each flower species
 
-3. Install dependencies:
-```bash
-pip install -r requirements.txt
-```
+The visualizations will be both displayed and saved as:
+- `confusion_matrix.png`
+- `feature_importance.png`
 
-# 1.6 Usage
-## 1.6.1 Running the Complete Workflow
-```bash
-python main.py
-```
+# 1.4 Dependencies
+- scikit-learn
+- matplotlib
+- seaborn
+- numpy
 
-## 1.6.2 Running Individual Components
-- Data preprocessing:
-```bash
-python data_preprocessing.py
-```
+# 2. Understanding the Code
 
-- Model training:
-```bash
-python model_training.py
-```
+The `simple_iris_classifier.py` file follows these steps:
 
-- Evaluation:
-```bash
-python evaluation.py
-```
+1. **Data Loading**: Loads the Iris dataset from scikit-learn
+2. **Data Splitting**: Divides the data into training (80%) and testing (20%) sets
+3. **Model Training**: Creates and trains a Gaussian Naive Bayes classifier
+4. **Prediction**: Uses the trained model to predict flower species
+5. **Evaluation**: Calculates accuracy and generates a classification report
+6. **Visualization**:
+   - Creates a confusion matrix to visualize classification results
+   - Generates feature importance plots to show which measurements are most significant for identifying each species
 
-- Visualization:
-```bash
-python visualization.py
-```
+# 3. Visualizations
 
-# 1.7 Dependencies
-- Python 3.8+
-- numpy==1.24.3
-- pandas==2.0.3
-- scikit-learn==1.3.0
-- matplotlib==3.7.2
-- seaborn==0.12.2
+## 3.1 Confusion Matrix
+The confusion matrix shows how well the model classified each species. The rows represent the true species, and the columns represent the predicted species. The diagonal elements show correct classifications, while off-diagonal elements show misclassifications.
 
-# 1.8 Contributing
-Contributions are welcome! Please follow these steps:
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
+## 3.2 Feature Importance
+The feature importance plots show which of the four measurements (sepal length, sepal width, petal length, petal width) are most important for identifying each flower species. Higher values indicate greater importance of that feature for classifying the specific species.
 
-## 1.8.1 Development Guidelines
-- Follow PEP 8 style guide
-- Write docstrings for all functions
-- Include unit tests for new features
-- Update documentation when making changes
+# 4. Next Steps
 
-# 1.9 License
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-# 1.10 References
-1. Fisher, R. A. (1936). The use of multiple measurements in taxonomic problems
-2. Scikit-learn documentation: https://scikit-learn.org/stable/
-3. Python Machine Learning by Sebastian Raschka
+Potential improvements and extensions:
+- Try different classification algorithms (Random Forest, SVM, etc.)
+- Implement cross-validation for more robust evaluation
+- Add more advanced visualizations like decision boundaries
+- Create an interactive version that can classify new flower measurements 
